@@ -32,7 +32,8 @@ class Signal:
         _unit: unit value of signal (eg "mm", "N","Pa",etc) (default: None).
         _cleaned: boolean value indicating whether the signal data has been cleaned (default: True). If the value
             is set to False, user defined preconditioning routines can be supplied via the Polisher class. 
-            TODO: Define and instantiate Polisher class.
+            TODO: Add Polisher class definition from notes.
+        _data: underlying data
     """
     def __init__(self,sig=None,name=None,param=True,cleaned=True):
         if sig is not None and param=None:
@@ -50,9 +51,16 @@ class Signal:
                 #If possible, logic for handling exceptions w/o having to propagate them farther should go here.
                 raise #TODO: define error type from Pandas or builtin error type
             if name is not None: 
+                try:
+                    self._data = sig.loc[:,name]
+                    self._name = name
+                except KeyError as e:
+                    #TODO: revert to default routine for identifying signal name and values
+                
+                #TODO: furnish test_vector; don't leave as simple example, move following piece of code into seperate function
+                test_vector = ["Time","(s)","min"] #TODO: 
+                poss_time = [[substr.lower() in i.lower() for substr in test_vector] for i in self._siglist] 
+                poss_time = list(map(lambda x: any(x[:]),poss_time)) #more robust recognition? 
 
-                #posstime: set of possible value labels
-                posstime = set(["time","(s)","hh:mm:ss"])
-            possname = [s.lower().]
-            
+                #finish out setting self._data and other params here
 

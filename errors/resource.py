@@ -81,9 +81,10 @@ class ResourceError(BaseError):
     
     Attributes:
         -- Note: Default values from baseclass are used if attributes aren't defined.
-        Message: Error message string printed when a resource error occurs.
-        Expression: Expression which failed to evaluate and resulted in the resource error.
-        Delim: Delimeter used by error formatter.
+        _message: Error message string printed when a resource error occurs.
+        _expression: Expression which failed to evaluate and resulted in the resource error.
+        _delim: Delimeter used by error formatter.
+
     """
     def __init__(self):
         self._message = "RESOURCE ERROR: Failed to identify resource handle"
