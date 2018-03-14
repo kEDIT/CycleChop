@@ -1,6 +1,6 @@
 import unittest
 
-from cyclechop import run
+from cyclechop.sample import run
 
 #@unittest.skip("TODO: Implement Schema")
 class TestSchema(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestSchema(unittest.TestCase):
     def tearDown(self):
         del(self.fixture)
     
-    #@unittest.skip("TODO: Exception raised")
+    @unittest.skip("TODO: Exception raised")
     def test_schema_smoke_exception(self):
         """
         Schema class constructor smoke test.
